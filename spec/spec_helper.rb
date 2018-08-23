@@ -1,4 +1,6 @@
 require "bundler/setup"
+require "simplecov"
+SimpleCov.start
 require "rfg"
 require "webmock/rspec"
 require "vcr"
