@@ -1,5 +1,2 @@
 require "rfg/version"
-
-module Rfg
-  # Your code goes here...
-end
+require "rfg/client"
