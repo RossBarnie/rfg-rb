@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'rfg'
+require 'rfg/cli'
+
+Rfg::Cli.start

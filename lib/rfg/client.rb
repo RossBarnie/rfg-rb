@@ -3,29 +3,35 @@ require 'json'
 
 module Rfg
   class Client
-    DEFAULT_ENDPOINT = "https://realfavicongenerator.net/api/favicon".freeze
+    DEFAULT_HOST = "https://realfavicongenerator.net".freeze
+    DEFAULT_GENERATE_PATH = "api/favicon".freeze
 
-    def initialize(endpoint: DEFAULT_ENDPOINT)
-      @endpoint = endpoint
+    attr_reader :response
+
+    def initialize(host: DEFAULT_HOST)
+      @host = host
       @headers = default_headers
+      @response = ""
     end
 
-    def generate_favicon(config:)
+    def generate_favicon(config:, path: DEFAULT_GENERATE_PATH)
       body = config.to_json
-      post(headers: @headers, body: body)
+      endpoint = "#{@host}/#{path}"
+      post(endpoint: endpoint, headers: @headers, body: body)
+      self
     end
 
     private
 
-    def post(headers:, body:)
-      uri = URI(@endpoint)
-      Net::HTTP.post(uri, body, headers)
+    def post(endpoint:, headers:, body:)
+      uri = URI(endpoint)
+      @response = Net::HTTP.post(uri, body, headers)
+      self
     end
 
     def default_headers
       {
-        "Accept" => "application/json",
-        "Content-Type" => "application/json; charset=UTF-8",
+        "Content-Type" => "application/json",
       }
     end
   end

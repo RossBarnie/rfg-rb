@@ -1,2 +1,5 @@
 require "rfg/version"
 require "rfg/client"
+require "rfg/config_parser"
+require "rfg/file_config_parser"
+require "rfg/response_formatter"
