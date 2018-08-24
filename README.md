@@ -1,5 +1,7 @@
 # RFG (Real Favicon Generator)
 
+[![Build Status](https://travis-ci.org/RossBarnie/rfg-rb.svg?branch=master)](https://travis-ci.org/RossBarnie/rfg-rb)
+
 Ruby API for generating a favicon via the [Real Favicon Generator non-interactive API](https://realfavicongenerator.net/api/non_interactive_api).
 
 ## Installation
